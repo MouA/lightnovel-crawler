@@ -48,7 +48,7 @@ def bind_books(app):
             file_name = '%s.txt' % str(chap['id']).rjust(5, '0')
             file_name = os.path.join(dir_name, file_name)
             os.makedirs(dir_name, exist_ok=True)
-            with open(file_name, 'w') as file:
+            with open(file_name, 'w', encoding='utf-8') as file:
                 body = chap['body'].replace('</p><p', '</p>\n<p')
                 soup = BeautifulSoup(body, 'lxml')
                 text = '\n\n'.join(soup.stripped_strings)
